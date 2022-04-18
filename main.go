@@ -51,18 +51,24 @@ func sum(array []float64, winSize int) float64 {
     return res
 }
 
-func movingAverage(winSize int, prices []float64) float64 {
-    // get sum
-    s := sum(prices, winSize)
-    ma := s/float64(winSize)
-    return ma
+func movingAverage(winSize int, prices []float64) []float64 {
+
+    var MAs []float64
+
+    for i := 1; i <= winSize; i++ {
+        // get sum
+        s := sum(prices, i)
+        ma := s/float64(i)
+
+        MAs = append(MAs, ma)
+    }
+    return MAs
 }
 
 func main() {
     prices := readCsvFile("prices1.csv")
     fmt.Println(prices)
     
-    // currently not moving :)
     // calculate moving average
     MA := movingAverage(10, prices)
     fmt.Println(MA)
