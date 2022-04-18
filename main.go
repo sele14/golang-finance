@@ -61,7 +61,8 @@ func movingAverage(winSize int, prices []float64) float64 {
 func main() {
     prices := readCsvFile("prices1.csv")
     fmt.Println(prices)
-
+    
+    // currently not moving :)
     // calculate moving average
     MA := movingAverage(10, prices)
     fmt.Println(MA)
