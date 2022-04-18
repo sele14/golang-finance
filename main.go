@@ -40,7 +40,29 @@ func s2f(str string) float64 {
     return f
 }
 
+func sum(array []float64, winSize int) float64 {
+    var res float64
+    for i, val := range array {
+        // sum up until window size
+        if i >= winSize {
+            res += val
+        }
+    }
+    return res
+}
+
+func movingAverage(winSize int, prices []float64) float64 {
+    // get sum
+    s := sum(prices, winSize)
+    ma := s/float64(winSize)
+    return ma
+}
+
 func main() {
     prices := readCsvFile("prices1.csv")
     fmt.Println(prices)
+
+    // calculate moving average
+    MA := movingAverage(10, prices)
+    fmt.Println(MA)
 }
